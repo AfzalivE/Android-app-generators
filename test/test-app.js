@@ -32,7 +32,6 @@ describe('ymca:app', function () {
 
   it('creates core app files', function () {
     assert.file([
-      'app/.gitignore',
       'app/build.gradle',
       'app/proguard-rules.pro',
       'app/src/main/AndroidManifest.xml'
@@ -49,10 +48,7 @@ describe('ymca:app', function () {
   it('copies androidTest, androidTestMock, mock, prod, test files', function () {
     assert.file([
       'app/src/androidTest/java/org/example/testapp/TestUtils.java',
-      'app/src/mock/java/org/example/testapp/Injection.java',
-      'app/src/prod/java/org/example/testapp/Injection.java',
-      'app/src/test/java/org/example/testapp/TestUseCaseScheduler.java',
-      'app/src/androidTestMock/java/org/example/testapp/taskdetail'
+      'app/src/mock/java/org/example/testapp/Injection.java'
     ]);
   });
 });

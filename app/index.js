@@ -39,7 +39,7 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the ' + chalk.red('Y') + chalk.blue('M') + chalk.green('C') + chalk.yellow('A') + ', also known as ' + chalk.red('Y') + 'eoman - it\'s me - ' + chalk.blue('M') + 'VP ' + chalk.green('C') + 'lean ' + chalk.yellow('A') + 'rchitecture generator for Android!'
+      'Welcome to the ' + chalk.yellow('MVP-RxJava')  + ' generator for Android!'
     ));
 
     var prompts = [{
