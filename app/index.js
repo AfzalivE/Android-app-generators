@@ -98,12 +98,15 @@ module.exports = yeoman.generators.Base.extend({
   writing: {
     projectfiles: function () {
       this.copy('gitignore', '.gitignore');
+      this.copy('circle.yml', 'circle.yml');
+      this.copy('gitlab-ci.yml', '.gitlab-ci.yml');
       this.copy('build.gradle', 'build.gradle');
       this.copy('gradle.properties', 'gradle.properties');
       this.copy('gradlew', 'gradlew');
       this.copy('gradlew.bat', 'gradlew.bat');
       this.copy('LICENSE', 'LICENSE');
       this.copy('settings.gradle', 'settings.gradle');
+      this.copy('local.properties', 'local.properties');
       this.directory('gradle', 'gradle');
     },
 
@@ -111,7 +114,6 @@ module.exports = yeoman.generators.Base.extend({
       var packageDir = this.appPackage.replace(/\./g, '/');
 
       this.mkdir('app');
-      this.copy('app/gitignore', 'app/.gitignore');
       this.copy('app/proguard-rules.pro', 'app/proguard-rules.pro');
       this.template('app/_build.gradle', 'app/build.gradle');
 

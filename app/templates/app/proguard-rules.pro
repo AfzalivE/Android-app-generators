@@ -1,9 +1,11 @@
 # Some methods are only called from tests, so make sure the shrinker keeps them.
--keep class com.example.android.architecture.blueprints.** { *; }
+-keep class <%= appPackage %>.** { *; }
 
 -keep class android.support.v4.widget.DrawerLayout { *; }
 -keep class android.support.test.espresso.IdlingResource { *; }
 -keep class com.google.common.base.Preconditions { *; }
+-keep class rx.observers.TestSubscriber { *; }
+-keep class rx.observers.TestScheduler { *; }
 
 # For Guava:
 -dontwarn javax.annotation.**

@@ -16,66 +16,33 @@
 
 package <%= appPackage %>;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import <%= appPackage %>.addedittask.domain.usecase.DeleteTask;
-import <%= appPackage %>.addedittask.domain.usecase.GetTask;
-import <%= appPackage %>.addedittask.domain.usecase.SaveTask;
-import <%= appPackage %>.data.FakeTasksRemoteDataSource;
-import <%= appPackage %>.data.source.TasksDataSource;
-import <%= appPackage %>.data.source.TasksRepository;
-import <%= appPackage %>.data.source.local.TasksLocalDataSource;
-import <%= appPackage %>.tasks.domain.filter.FilterFactory;
-import <%= appPackage %>.tasks.domain.usecase.ActivateTask;
-import <%= appPackage %>.tasks.domain.usecase.ClearCompleteTasks;
-import <%= appPackage %>.tasks.domain.usecase.CompleteTask;
-import <%= appPackage %>.tasks.domain.usecase.GetTasks;
+import <%= appPackage %>.data.source.DataRepository;
+import <%= appPackage %>.data.source.local.LocalDataSource;
+import <%= appPackage %>.data.source.preference.PreferenceProvider;
+import <%= appPackage %>.data.source.remote.RemoteDataSource;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * Enables injection of mock implementations for
- * {@link TasksDataSource} at compile time. This is useful for testing, since it allows us to use
- * a fake instance of the class to isolate the dependencies and run a test hermetically.
+ * Enables injection from mock implementations.
+ * This is useful for testing, since it allows us to use
+ * a fake instance from the class to isolate the dependencies and run a test hermetically.
  */
 public class Injection {
 
-    public static TasksRepository provideTasksRepository(@NonNull Context context) {
+    public static PreferenceProvider providePreferenceProvider(@NonNull Context context) {
         checkNotNull(context);
-        return TasksRepository.getInstance(FakeTasksRemoteDataSource.getInstance(),
-                TasksLocalDataSource.getInstance(context));
+        return PreferenceProvider.getInstance(context);
     }
 
-    public static GetTasks provideGetTasks(@NonNull Context context) {
-        return new GetTasks(provideTasksRepository(context), new FilterFactory());
-    }
-
-    public static UseCaseHandler provideUseCaseHandler() {
-        return UseCaseHandler.getInstance();
-    }
-
-    public static GetTask provideGetTask(Context context) {
-        return new GetTask(Injection.provideTasksRepository(context));
-    }
-
-    public static SaveTask provideSaveTask(Context context) {
-        return new SaveTask(Injection.provideTasksRepository(context));
-    }
-
-    public static CompleteTask provideCompleteTasks(Context context) {
-        return new CompleteTask(Injection.provideTasksRepository(context));
-    }
-
-    public static ActivateTask provideActivateTask(Context context) {
-        return new ActivateTask(Injection.provideTasksRepository(context));
-    }
-
-    public static ClearCompleteTasks provideClearCompleteTasks(Context context) {
-        return new ClearCompleteTasks(Injection.provideTasksRepository(context));
-    }
-
-    public static DeleteTask provideDeleteTask(Context context) {
-        return new DeleteTask(Injection.provideTasksRepository(context));
+    public static DataRepository provideDataRepository(Context context) {
+        checkNotNull(context);
+        return DataRepository.getInstance(
+                LocalDataSource.getInstance(context),
+                RemoteDataSource.getInstance(context),
+                PreferenceProvider.getInstance(context));
     }
 }

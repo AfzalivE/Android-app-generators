@@ -1,7 +1,7 @@
 {
-  "name": "generator-ymca",
+  "name": "generator-ymca-rxjava",
   "version": "1.0.2",
-  "description": "Yeoman MVP Clean Android Architecture",
+  "description": "Yeoman MVP RxJava",
   "main": "app/index.js",
   "scripts": {
     "test": "mocha"
@@ -16,8 +16,7 @@
   "keywords": [
     "yeoman-generator",
     "android",
-    "clean",
-    "architecure",
+    "rxjava",
     "mvp"
   ],
   "author": "Thomas Dalous",

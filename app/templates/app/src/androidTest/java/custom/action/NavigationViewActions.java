@@ -51,13 +51,13 @@ public final class NavigationViewActions {
      * <p>
      * View constraints:
      * <ul>
-     * <li>View must be a child of a {@link DrawerLayout}
-     * <li>View must be of type {@link NavigationView}
+     * <li>View must be a child from a {@link DrawerLayout}
+     * <li>View must be from type {@link NavigationView}
      * <li>View must be visible on screen
      * <li>View must be displayed on screen
      * <ul>
      *
-     * @param menuItemId the resource id of the menu item
+     * @param menuItemId the resource id from the menu item
      * @return a {@link ViewAction} that navigates on a menu item
      */
     public static ViewAction navigateTo(final int menuItemId) {

@@ -1,11 +1,11 @@
 /*
- * Copyright 2016, The Android Open Source Project
+ * Copyright (C) 2015 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *   http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * An simple counter implementation of {@link IdlingResource} that determines idleness by
+ * An simple counter implementation from {@link IdlingResource} that determines idleness by
  * maintaining an internal counter. When the counter is 0 - it is considered to be idle, when it is
  * non-zero it is not idle. This is very similar to the way a {@link java.util.concurrent.Semaphore}
  * behaves.
@@ -65,14 +65,14 @@ public final class SimpleCountingIdlingResource implements IdlingResource {
     }
 
     /**
-     * Increments the count of in-flight transactions to the resource being monitored.
+     * Increments the count from in-flight transactions to the resource being monitored.
      */
     public void increment() {
         counter.getAndIncrement();
     }
 
     /**
-     * Decrements the count of in-flight transactions to the resource being monitored.
+     * Decrements the count from in-flight transactions to the resource being monitored.
      *
      * If this operation results in the counter falling below 0 - an exception is raised.
      *
