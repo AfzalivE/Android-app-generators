@@ -1,4 +1,4 @@
-# Yeoman MVP RxJava : Yeoman MVP RxJava for Android
+# Yeoman MVP RxJava for Android
 This Yeoman generator is based on the work on Thomas Dalous's [YMCA Generator](https://github.com/otomatik/generator-ymca). All the code that is written by him is used in this project under his MIT license.
 
 ## Changes from YMCA Generator
