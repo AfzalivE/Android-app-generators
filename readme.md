@@ -2,7 +2,9 @@
 This Yeoman generator is based on the work on Thomas Dalous's [YMCA Generator](https://github.com/otomatik/generator-ymca). All the code that is written by him is used in this project under his MIT license.
 
 ## Changes from YMCA Generator
-I simplified the template after using it for a few months to minimize the changes required to create a new app from this, so you don't have to spend as much time deleting things before starting your app. It uses [JSONPlaceholder](https://jsonplaceholder.typicode.com) to download some data and show it in a list. I also added some base classes that I use very frequently (BaseActivity, BaseFragment), simplified BasePresenter a little. Added some helpful comments.
+I simplified the template after using it for a few months to minimize the changes required to create a new app from this, so you don't have to spend as much time deleting things before starting your app.
+
+It uses [JSONPlaceholder](https://jsonplaceholder.typicode.com) to download some data and show it in a list. I also added some base classes that I use very frequently (BaseActivity, BaseFragment), simplified BasePresenter a little. Added some helpful comments.
 
 ## Intro
 
@@ -46,6 +48,7 @@ This will create a MVP structured Post list Android app skeleton based on the MV
 
 ## History
 v1.0.2: Simplified to speed up customization after generation
+
 v1.0  : simple MVP generator inside
 
 ## Road map
