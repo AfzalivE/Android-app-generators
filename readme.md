@@ -1,7 +1,9 @@
-# YMCA : Yeoman MVP Clean Architecture for Android
-YMCA is a [Yeoman](http://yeoman.io) generator to scaffold an Android application based on the [Google's sample ToDo list](https://github.com/googlesamples/android-architecture/tree/todo-mvp/) which illustrates the [MVP pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) and clean architecture principles.
+# Yeoman MVP RxJava : Yeoman MVP RxJava for Android
+YMCA is a [Yeoman](http://yeoman.io) generator to scaffold an Android application based on the [Google's sample ToDo list](https://github.com/googlesamples/android-architecture/tree/todo-mvp/) which illustrates the [MVP pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) and some clean architecture principles.
 
-You can use it to bootstrap an application project to save time for instance. It may also help if you consider diving into the ToDo sample and familiarize with the MVP pattern or the Clean Architecture concepts.
+You can use it to bootstrap an application project to save time for instance. It may also help if you consider diving into the ToDo sample and familiarize with the MVP pattern.
+
+It also uses Loaders to create Presenters that survive configuration changes based on [Presenter surviving orientation changes with Loaders](https://medium.com/@czyrux/presenter-surviving-orientation-changes-with-loaders-6da6d86ffbbf#.si50hutro).
 
 ## Installation
 ### Install Yeoman
@@ -16,10 +18,10 @@ npm install -g yo
 
 Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in.
 
-To install generator-ymca from npm, run:
+To install generator-mvp-rxjava from npm, run:
 
 ```bash
-npm install -g generator-ymca
+npm install -g generator-mvp-rxjava
 ```
 
 ## Usage
@@ -30,16 +32,18 @@ mkdir my-awesome-app && cd $_
 Then initiate the generator:
 
 ```bash
-yo ymca
+yo mvp-rxjava
 ```
 
-This will create a MVP structured ToDo list Android app skeleton based on the clean architecture principles. Once you ran it, you are free to remove any part of that wouldn't fit your needs (ie. you may not be interested in creating a ToDo list application).
+This will create a MVP structured Post list Android app skeleton based on the MVP architecture. Once you ran it, you are free to remove any part of that wouldn't fit your needs (ie. you may not be interested in creating a list).
+
+I simplified the template after using it for a few months to minimize the changes required to create a new app from this. It uses [JSONPlaceholder](https://jsonplaceholder.typicode.com) to download some data and show it in a list.
 
 ## History
-v1.0: simple MVP generator inside
+v1.0.2: Simplified to speed up customization after generation
+v1.0  : simple MVP generator inside
 
 ## Road map
-* Adding support for others [Google's samples](https://github.com/googlesamples/android-architecture/)
 * Adding more configurable fields in the generator
 
 ## Contributing
@@ -51,7 +55,7 @@ v1.0: simple MVP generator inside
 6. Submit a pull request :D
 
 ## Spread the word (and love)
-If you found YMCA useful you can tweet just by clicking [here](https://goo.gl/lsIE8D)!
+If you found YMCA useful you can tweet just by clicking [here](https://goo.gl/JpIzmw)!
 
 ## Credits
 Inspired by the [generator-android-square-stack](https://raw.githubusercontent.com/kuhnza/generator-android-square-stack)
