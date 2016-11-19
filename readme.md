@@ -1,4 +1,11 @@
 # Yeoman MVP RxJava : Yeoman MVP RxJava for Android
+This Yeoman generator is based on the work on Thomas Dalous's [YMCA Generator](https://github.com/otomatik/generator-ymca). All the code that is written by him is used in this project under his MIT license.
+
+## Changes from YMCA Generator
+I simplified the template after using it for a few months to minimize the changes required to create a new app from this, so you don't have to spend as much time deleting things before starting your app. It uses [JSONPlaceholder](https://jsonplaceholder.typicode.com) to download some data and show it in a list. I also added some base classes that I use very frequently (BaseActivity, BaseFragment), simplified BasePresenter a little. Added some helpful comments.
+
+## Intro
+
 YMCA is a [Yeoman](http://yeoman.io) generator to scaffold an Android application based on the [Google's sample ToDo list](https://github.com/googlesamples/android-architecture/tree/todo-mvp/) which illustrates the [MVP pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) and some clean architecture principles.
 
 You can use it to bootstrap an application project to save time for instance. It may also help if you consider diving into the ToDo sample and familiarize with the MVP pattern.
@@ -37,8 +44,6 @@ yo mvp-rxjava
 
 This will create a MVP structured Post list Android app skeleton based on the MVP architecture. Once you ran it, you are free to remove any part of that wouldn't fit your needs (ie. you may not be interested in creating a list).
 
-I simplified the template after using it for a few months to minimize the changes required to create a new app from this. It uses [JSONPlaceholder](https://jsonplaceholder.typicode.com) to download some data and show it in a list.
-
 ## History
 v1.0.2: Simplified to speed up customization after generation
 v1.0  : simple MVP generator inside
@@ -55,7 +60,7 @@ v1.0  : simple MVP generator inside
 6. Submit a pull request :D
 
 ## Spread the word (and love)
-If you found YMCA useful you can tweet just by clicking [here](https://goo.gl/JpIzmw)!
+If you found MVP-RxJava useful you can tweet just by clicking [here](https://goo.gl/JpIzmw)!
 
 ## Credits
 Inspired by the [generator-android-square-stack](https://raw.githubusercontent.com/kuhnza/generator-android-square-stack)
@@ -68,7 +73,7 @@ while listening to [the village people tube](https://www.youtube.com/watch?v=CS9
 ```
 The MIT License (MIT)
 
-Copyright (c) 2016 Thomas Dalous
+Copyright (c) 2016 Afzal Najam
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
