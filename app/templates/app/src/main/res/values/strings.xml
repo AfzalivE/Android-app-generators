@@ -15,5 +15,5 @@
   -->
 
 <resources>
-    <string name="app_name">My Posts App</string>
+    <string name="app_name"><%= appName %></string>
 </resources>
