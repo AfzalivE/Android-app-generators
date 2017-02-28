@@ -3,15 +3,15 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:2.3.0-beta4'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-        classpath 'me.tatarka:gradle-retrolambda:3.2.5'
+        classpath 'me.tatarka:gradle-retrolambda:3.5.0'
         // Fix lint issue with retrolambda
         classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2'
         // Exclude the version that the android plugin depends on.
         configurations.classpath.exclude group: 'com.android.tools.external.lombok'
 
-        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.1'
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -36,20 +36,20 @@ ext {
     minSdkVersion = 21
     targetSdkVersion = 24
     compileSdkVersion = 24
-    buildToolsVersion = '24.0.1'
+    buildToolsVersion = '25.0.2'
 
     // App dependencies
-    supportLibraryVersion = '24.2.1'
-    gmsLocationVersion = '9.4.0'
+    supportLibraryVersion = '25.2.0'
+    gmsLocationVersion = '10.2.0'
     firebaseVersion = '9.4.0'
     guavaVersion = '18.0'
     rxJavaVersion = '1.2.2'
     rxAndroidVersion = '1.2.1'
-    butterknifeVersion = '8.4.0'
-    timberVersion = '4.3.1'
-    retrofitVersion = '2.1.0'
-    retrofitGsonConverterVersion = '2.1.0'
-    retrofitRxCallAdapterVersion = '2.1.0'
+    butterknifeVersion = '8.5.1'
+    timberVersion = '4.5.1'
+    retrofitVersion = '2.2.0'
+    retrofitGsonConverterVersion = '2.2.0'
+    retrofitRxCallAdapterVersion = '2.2.0'
     retrofitLoggingVersion = '3.4.2'
     powermockVersion = '1.6.6'
 

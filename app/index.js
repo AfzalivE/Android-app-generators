@@ -64,7 +64,14 @@ module.exports = yeoman.generators.Base.extend({
       message: 'What is the minimum Android SDK you wish to support?',
       store: true,
       default: 14  // Android 4.0 (Ice Cream Sandwich)
-    }];
+    },
+    {
+      name: 'useCI',
+      message: 'Add .yml configs and Android license files for Gitlab and CircleCI',
+      store: true,
+      default: true
+    }
+    ];
 
     this.log("Here is a little schema of the MVP Clean Architecture:");
     this.log("                                        " + chalk.yellow("SQLite"));
@@ -90,6 +97,7 @@ module.exports = yeoman.generators.Base.extend({
       this.appPackage = props.package;
       this.androidTargetSdkVersion = props.targetSdk;
       this.androidMinSdkVersion = props.minSdk;
+      this.useCI = props.useCI;
 
       done();
     }.bind(this));
@@ -98,8 +106,6 @@ module.exports = yeoman.generators.Base.extend({
   writing: {
     projectfiles: function () {
       this.copy('gitignore', '.gitignore');
-      this.copy('circle.yml', 'circle.yml');
-      this.copy('gitlab-ci.yml', '.gitlab-ci.yml');
       this.copy('build.gradle', 'build.gradle');
       this.copy('gradle.properties', 'gradle.properties');
       this.copy('gradlew', 'gradlew');
@@ -108,6 +114,12 @@ module.exports = yeoman.generators.Base.extend({
       this.copy('settings.gradle', 'settings.gradle');
       this.copy('local.properties', 'local.properties');
       this.directory('gradle', 'gradle');
+      if (this.useCI) {
+        this.copy('circle.yml', 'circle.yml');
+        this.copy('gitlab-ci.yml', '.gitlab-ci.yml');
+        this.directory('android-sdk', 'android-sdk');
+        this.directory('scripts', 'scripts');
+      }
     },
 
     app: function () {
