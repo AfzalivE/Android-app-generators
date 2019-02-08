@@ -12,7 +12,10 @@ var path = require('path');
  */
 function templateDirectory(source, destination) {
   var root = this.isPathAbsolute(source) ? source : path.join(this.sourceRoot(), source);
-  var files = this.expandFiles('**', { dot: true, cwd: root });
+  var files = this.expandFiles('**', {
+    dot: true,
+    cwd: root
+  });
 
   for (var i = 0; i < files.length; i++) {
     var f = files[i];
@@ -20,8 +23,7 @@ function templateDirectory(source, destination) {
     if (path.basename(f).indexOf('_') == 0) {
       var dest = path.join(destination, path.dirname(f), path.basename(f).replace(/^_/, ''));
       this.template(src, dest);
-    }
-    else {
+    } else {
       var dest = path.join(destination, f);
       this.copy(src, dest);
     }
@@ -39,38 +41,38 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the ' + chalk.yellow('MVP-RxJava')  + ' generator for Android!'
+      'Welcome to the ' + chalk.yellow('MVVM') + ' generator for Android!'
     ));
 
     var prompts = [{
-      name: 'name',
-      message: 'What are you calling your app?',
-      store: true,
-      default : this.appname // Default to current folder name
-    },
-    {
-      name: 'package',
-      message: 'What package will you be publishing the app under?',
-      store: true
-    },
-    {
-      name: 'targetSdk',
-      message: 'What Android SDK will you be targeting?',
-      store: true,
-      default: 21  // Android 5.0 (Lollipop)
-    },
-    {
-      name: 'minSdk',
-      message: 'What is the minimum Android SDK you wish to support?',
-      store: true,
-      default: 14  // Android 4.0 (Ice Cream Sandwich)
-    },
-    {
-      name: 'useCI',
-      message: 'Add .yml configs and Android license files for Gitlab and CircleCI',
-      store: true,
-      default: true
-    }
+        name: 'name',
+        message: 'What are you calling your app?',
+        store: true,
+        default: this.appname // Default to current folder name
+      },
+      {
+        name: 'package',
+        message: 'What package will you be publishing the app under?',
+        store: true
+      },
+      {
+        name: 'targetSdk',
+        message: 'What Android SDK will you be targeting?',
+        store: true,
+        default: 28 // Android 9.0 (Oreo)
+      },
+      {
+        name: 'minSdk',
+        message: 'What is the minimum Android SDK you wish to support?',
+        store: true,
+        default: 19 // Android 4.4 (Kitkat)
+      },
+      {
+        name: 'useCI',
+        message: 'Add .yml configs and Android license files for Gitlab and CircleCI',
+        store: true,
+        default: true
+      }
     ];
 
     this.log("Here is a little schema of the MVP Clean Architecture:");
@@ -152,7 +154,7 @@ module.exports = yeoman.generators.Base.extend({
       this.templateDirectory('app/src/main/res', 'app/src/main/res');
     }
   },
-  end: function() {
+  end: function () {
     this.log(yosay(
       'Thanks for using ' + chalk.red('Y') + chalk.blue('M') + chalk.green('C') + chalk.yellow('A') + '! If you found it useful follow this link ' + chalk.green('https://goo.gl/lsIE8D') + ' to tweet and spread the word, and love. Peace.'
     ));
