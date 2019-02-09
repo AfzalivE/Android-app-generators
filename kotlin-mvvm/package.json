@@ -1,0 +1,45 @@
+{
+  "name": "generator-kotlin-mvvm",
+  "version": "0.0.0",
+  "description": "Generates an MVVM Android app",
+  "homepage": "https://github.com/afzalive/android-app-generators",
+  "author": {
+    "name": "Afzal Najam",
+    "email": "afzalnaj@gmail.com",
+    "url": "https://afzaln.com"
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "android",
+    "java",
+    "kotlin",
+    "mvvm",
+    "livedata",
+    "architecture",
+    "yeoman-generator"
+  ],
+  "devDependencies": {
+    "yeoman-test": "^1.7.0",
+    "yeoman-assert": "^3.1.0",
+    "jest": "^23.5.0"
+  },
+  "engines": {
+    "npm": ">= 4.0.0"
+  },
+  "dependencies": {
+    "yeoman-generator": "^2.0.1",
+    "chalk": "^2.1.0",
+    "yosay": "^2.0.1"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": "git@github.com:AfzalivE/Android-app-generators.git",
+  "license": "MIT"
+}

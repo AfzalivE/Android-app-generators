@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Afzal Najam",
+      "authorEmail": "afzalnaj@gmail.com",
+      "authorUrl": "https://afzaln.com"
+    }
+  }
+}
