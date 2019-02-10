@@ -1,10 +1,10 @@
-package <%= packageName %>.ui.home
+package ${packageName}.ui.${subpackageName}
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
 
-class HomeViewModel : ViewModel() {
+class ${className}ViewModel : ViewModel() {
 
     /**
      * This is the job for all coroutines started by this ViewModel.
@@ -13,7 +13,7 @@ class HomeViewModel : ViewModel() {
     private val viewModelJob = Job()
 
     /**
-     * This is the scope for all coroutines launched by [HomeViewModel].
+     * This is the scope for all coroutines launched by [${className}ViewModel].
      *
      * Since we pass [viewModelJob], you can cancel all coroutines
      * launched by [viewModelScope] by calling viewModelJob.cancel().
@@ -21,15 +21,15 @@ class HomeViewModel : ViewModel() {
      */
     private val viewModelScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    internal val homeViewState = MutableLiveData<HomeViewState>()
+    internal val ${subpackageName}ViewState = MutableLiveData<${className}ViewState>()
 
     fun refreshState() {
-      homeViewState.value = HomeViewState.Loading
+      ${subpackageName}ViewState.value = ${className}ViewState.Loading
 
       viewModelScope.launch {
           // some 2 second async task
           delay(2000)
-          homeViewState.value = HomeViewState.Loaded
+          ${subpackageName}ViewState.value = ${className}ViewState.Loaded
       }
     }
 
@@ -38,10 +38,10 @@ class HomeViewModel : ViewModel() {
         viewModelScope.cancel()
     }
 
-     sealed class HomeViewState {
-        object Loading : HomeViewState()
-        object Empty : HomeViewState()
-        object Error : HomeViewState()
-        object Loaded : HomeViewState()
+     sealed class ${className}ViewState {
+        object Loading : ${className}ViewState()
+        object Empty : ${className}ViewState()
+        object Error : ${className}ViewState()
+        object Loaded : ${className}ViewState()
     }
 }

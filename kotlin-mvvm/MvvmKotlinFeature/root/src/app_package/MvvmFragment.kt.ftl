@@ -1,4 +1,4 @@
-package <%= packageName %>.ui.home
+package ${packageName}.ui.${subpackageName};
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,22 +8,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.transition.TransitionManager
-import <%= packageName %>.R
-import <%= packageName %>.ui.home.HomeViewModel.HomeViewState
-import kotlinx.android.synthetic.main.home_fragment.*
+import ${packageName}.R
+import ${packageName}.ui.${subpackageName}.${className}ViewModel.${className}ViewState
+import kotlinx.android.synthetic.main.${subpackageName}_fragment.*
 
-class HomeFragment : Fragment() {
+class ${className}Fragment : Fragment() {
 
-    private var model: HomeViewModel? = null
+    private var model: ${className}ViewModel? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.home_fragment, container, false)
+        inflater.inflate(R.layout.${subpackageName}_fragment, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        model = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        model?.homeViewState?.observe(this, Observer { state ->
+        model = ViewModelProviders.of(this).get(${className}ViewModel::class.java)
+        model?.${subpackageName}ViewState?.observe(this, Observer { state ->
             render(state)
         })
     }
@@ -33,12 +33,12 @@ class HomeFragment : Fragment() {
         model?.refreshState()
     }
 
-    private fun render(state: HomeViewState?) {
+    private fun render(state: ${className}ViewState?) {
         when (state) {
-            is HomeViewState.Loading -> renderLoading()
-            is HomeViewState.Empty   -> renderEmpty()
-            is HomeViewState.Error   -> renderError()
-            is HomeViewState.Loaded  -> renderLoaded(state)
+            is ${className}ViewState.Loading -> renderLoading()
+            is ${className}ViewState.Empty   -> renderEmpty()
+            is ${className}ViewState.Error   -> renderError()
+            is ${className}ViewState.Loaded  -> renderLoaded(state)
         }
     }
 
@@ -66,7 +66,7 @@ class HomeFragment : Fragment() {
         error.visibility = View.VISIBLE
     }
 
-    private fun renderLoaded(state: HomeViewState.Loaded) {
+    private fun renderLoaded(state: ${className}ViewState.Loaded) {
         TransitionManager.beginDelayedTransition(loaded_container)
         progress.visibility = View.GONE
         loaded_container.visibility = View.VISIBLE
