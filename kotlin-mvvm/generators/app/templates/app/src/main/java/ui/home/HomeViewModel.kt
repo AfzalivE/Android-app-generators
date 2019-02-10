@@ -28,7 +28,7 @@ class HomeViewModel : ViewModel() {
       viewModelScope.launch {
           // some 2 second async task
           delay(2000)
-          homeViewState.value = HomeViewState.Loaded()
+          homeViewState.value = HomeViewState.Loaded
       }
     }
 

@@ -35,10 +35,11 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+<% if (locals.fabricApiKey) { -%>
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="YourFabricApiKey" />
-
+            android:value="<%= fabricApiKey %>" />
+<% } -%>
     </application>
 
 </manifest>

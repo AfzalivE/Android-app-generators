@@ -15,8 +15,9 @@ class MyApp : Application() {
         super.onCreate()
 
         Injection.init(this)
+<% if (locals.fabricApiKey) { -%>
         Fabric.with(this, Beta(), Crashlytics())
-
+<% } -%>
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }

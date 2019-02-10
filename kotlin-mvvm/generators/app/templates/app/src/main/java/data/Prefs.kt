@@ -1,8 +1,7 @@
-package <%= packageName %>
+package <%= packageName %>.data
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.afzaln.secretkeeper.SecretKeeper
 import timber.log.Timber
 
 class Prefs(private val appContext: Context) {

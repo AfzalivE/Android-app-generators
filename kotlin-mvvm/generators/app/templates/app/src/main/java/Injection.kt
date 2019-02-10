@@ -2,6 +2,7 @@ package <%= packageName %>
 
 import android.annotation.SuppressLint
 import android.content.Context
+import com.afzaln.test.data.Prefs
 
 class Injection private constructor(private val appContext: Context) {
 

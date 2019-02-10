@@ -73,10 +73,10 @@ module.exports = class extends Generator {
         default: true
       },
       {
-        name: 'useFabric',
-        message: 'Add Fabric.io dependencies',
-        store: true,
-        default: false
+        name: 'fabricApiKey',
+        message: 'Set a Fabric API Key to Add Fabric.io dependencies',
+        store: false,
+        default: ""
       }
     ];
 
@@ -117,13 +117,6 @@ module.exports = class extends Generator {
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
       this.props = props;
-      this.props.fabricMavenUrl = ""
-      this.props.fabricClasspath = ""
-
-      if (this.props.useFabric) {
-        this.props.fabricMavenUrl = "maven { url 'https://maven.fabric.io/public' }"
-        this.props.fabricClasspath = "classpath 'io.fabric.tools:gradle:1.+'"
-      }
     });
   }
 

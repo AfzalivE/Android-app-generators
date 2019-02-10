@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun renderLoading() {
-        TransitionManager.beginDelayedTransition(container)
+        TransitionManager.beginDelayedTransition(loaded_container)
         progress.visibility = View.VISIBLE
         loaded_container.visibility = View.GONE
         empty.visibility = View.GONE
@@ -51,7 +51,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun renderEmpty() {
-        TransitionManager.beginDelayedTransition(container)
+        TransitionManager.beginDelayedTransition(loaded_container)
         progress.visibility = View.GONE
         loaded_container.visibility = View.GONE
         empty.visibility = View.VISIBLE
@@ -59,7 +59,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun renderError() {
-        TransitionManager.beginDelayedTransition(container)
+        TransitionManager.beginDelayedTransition(loaded_container)
         progress.visibility = View.GONE
         loaded_container.visibility = View.GONE
         empty.visibility = View.GONE
@@ -67,7 +67,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun renderLoaded(state: HomeViewState.Loaded) {
-        TransitionManager.beginDelayedTransition(container)
+        TransitionManager.beginDelayedTransition(loaded_container)
         progress.visibility = View.GONE
         loaded_container.visibility = View.VISIBLE
         empty.visibility = View.GONE

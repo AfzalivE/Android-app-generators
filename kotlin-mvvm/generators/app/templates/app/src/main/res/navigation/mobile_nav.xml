@@ -4,53 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_nav.xml"
-    app:startDestination="@id/ideaListFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/ideaListFragment"
-        android:name="com.afzaln.theideapool.ideas.IdeaListFragment"
-        android:label="fragment_idea_list"
-        tools:layout="@layout/idea_list_fragment">
-        <action
-            android:id="@+id/action_ideaListFragment_to_addIdeaFragment"
-            app:destination="@id/addIdeaFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.afzaln.theideapool.onboarding.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/login_fragment"/>
-    <fragment
-        android:id="@+id/signupFragment"
-        android:name="com.afzaln.theideapool.onboarding.SignupFragment"
-        android:label="fragment_signup"
-        tools:layout="@layout/signup_fragment"/>
-    <fragment
-        android:id="@+id/addIdeaFragment"
-        android:name="com.afzaln.theideapool.addidea.AddIdeaFragment"
-        android:label="add_idea_fragment"
-        tools:layout="@layout/add_idea_fragment" >
-        <argument
-            android:name="idea"
-            app:argType="com.afzaln.theideapool.models.Idea"
-            app:nullable="true"
-            android:defaultValue="@null" />
-    </fragment>
-    <action
-        android:id="@+id/action_goto_ideaListFragment"
-        app:destination="@id/ideaListFragment"
-        app:popUpTo="@id/mobile_nav.xml"
-        app:launchSingleTop="true" />
-    <action
-        android:id="@+id/action_goto_signupFragment"
-        app:destination="@id/signupFragment"
-        app:launchSingleTop="true"
-        app:popUpTo="@+id/loginFragment"
-        app:popUpToInclusive="true" />
-    <action
-        android:id="@+id/action_goto_loginFragment"
-        app:destination="@id/loginFragment"
-        app:popUpTo="@id/mobile_nav.xml"
-        app:popUpToInclusive="true"
-        app:launchSingleTop="true" />
+        android:id="@+id/homeFragment"
+        android:name="<%= packageName %>.ui.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/home_fragment" />
 </navigation>
