@@ -2,7 +2,6 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const mkdir = require('mkdirp')
 
 /**
  * Use fs.copy or fs.copyTpl depending on whether
@@ -132,10 +131,10 @@ module.exports = class extends Generator {
     // project files
     this.copy('gitignore', '.gitignore');
     this.copy('gradle.properties', 'gradle.properties');
-    // this.copy('gradlew', 'gradlew');
-    // this.copy('gradlew.bat', 'gradlew.bat');
+    this.copy('gradlew', 'gradlew');
+    this.copy('gradlew.bat', 'gradlew.bat');
     this.copy('settings.gradle', 'settings.gradle');
-    // this.copy('gradle', 'gradle');
+    this.copy('gradle', 'gradle');
 
     this.copy('_build.gradle', 'build.gradle')
   }
@@ -143,11 +142,9 @@ module.exports = class extends Generator {
   appFiles() {
     var packageDir = this.props.packageName.replace(/\./g, '/');
 
-    // mkdir('app');
     this.copy('app/proguard-rules.pro', 'app/proguard-rules.pro');
     this.copy('app/_build.gradle', 'app/build.gradle');
 
-    // mkdir('app/src/main/java/' + packageDir);
     this.copy('app/src/main/_AndroidManifest.xml', 'app/src/main/AndroidManifest.xml');
     this.copyTpl('app/src/main/java', 'app/src/main/java/' + packageDir);
     this.copyTpl('app/src/main/res', 'app/src/main/res');

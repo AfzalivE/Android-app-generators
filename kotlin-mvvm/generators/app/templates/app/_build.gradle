@@ -70,9 +70,8 @@ dependencies {
     implementation "android.arch.navigation:navigation-ui-ktx:$versions.navigation"
 
     // data libs
-    // implementation "android.arch.persistence.room:runtime:$room_version"
-    // implementation "android.arch.persistence.room:rxjava2:$room_version"
-    // kapt "android.arch.persistence.room:compiler:$room_version"
+    implementation "androidx.room:room-runtime:$versions.room"
+     kapt "androidx.room:room-compiler:$versions.room"
     // implementation "com.jakewharton.threetenabp:threetenabp:1.1.0"
     // implementation "com.github.kizitonwose.time:time:1.0.2"
     // implementation "com.github.kizitonwose.time:time-android:1.0.2"
