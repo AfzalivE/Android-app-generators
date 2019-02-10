@@ -146,6 +146,15 @@ module.exports = class extends Generator {
 
     this.copy('app/src/main/_AndroidManifest.xml', 'app/src/main/AndroidManifest.xml');
     this.copyTpl('app/src/main/java', 'app/src/main/java/' + packageDir);
+
+    // Delete room files if addRoom is false
+    if (!this.props.addRoom) {
+      this.fs.delete(this.destinationPath('app/src/main/java/' + packageDir + "/data/dao"))
+      this.fs.delete(this.destinationPath('app/src/main/java/' + packageDir + "/data/entities"))
+      this.fs.delete(this.destinationPath('app/src/main/java/' + packageDir + "/data/ItemDatabase.kt"))
+      this.fs.delete(this.destinationPath('app/src/main/java/' + packageDir + "/data/ItemDataStore.kt"))
+    }
+
     this.copyTpl('app/src/main/res', 'app/src/main/res');
   }
 
