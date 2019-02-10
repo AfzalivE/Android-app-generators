@@ -73,6 +73,12 @@ module.exports = class extends Generator {
         default: true
       },
       {
+        name: 'addRoom',
+        message: 'Add Room boilerplate and a sample DAO using coroutines API',
+        store: false,
+        default: false
+      },
+      {
         name: 'fabricApiKey',
         message: 'Set a Fabric API Key to Add Fabric.io dependencies',
         store: false,
