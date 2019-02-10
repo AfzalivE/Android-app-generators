@@ -5,5 +5,14 @@
       "authorEmail": "afzalnaj@gmail.com",
       "authorUrl": "https://afzaln.com"
     }
+  },
+  "generator-kotlin-mvvm": {
+    "promptValues": {
+      "name": "generator kotlin mvvm",
+      "package": "com.afzaln.test",
+      "targetSdk": 28,
+      "minSdk": 19,
+      "useCI": true
+    }
   }
 }

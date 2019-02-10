@@ -1,0 +1,101 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
+apply plugin: 'io.fabric'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "<%= packageName %>"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 5
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+    }
+
+    signingConfigs {
+        release {
+            Properties keyProps = new Properties()
+            File keyProperties = file('../keystore.properties')
+            if (keyProperties.exists()) {
+                keyProps.load(new FileInputStream(keyProperties))
+
+                storeFile file(keyProps['store'])
+                keyAlias keyProps['alias']
+                storePassword keyProps['storePass']
+                keyPassword keyProps['pass']
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-DEBUG'
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.0'
+
+    // support libs
+    implementation "androidx.appcompat:appcompat:1.0.2"
+    implementation "com.google.android.material:material:$versions.material"
+    implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
+
+    // architecture libs
+    implementation "androidx.lifecycle:lifecycle-extensions:$versions.androidxArch"
+    kapt "androidx.lifecycle:lifecycle-compiler:$versions.androidxArch"
+    implementation "android.arch.navigation:navigation-fragment-ktx:$versions.navigation"
+    implementation "android.arch.navigation:navigation-ui-ktx:$versions.navigation"
+
+    // data libs
+    // implementation "android.arch.persistence.room:runtime:$room_version"
+    // implementation "android.arch.persistence.room:rxjava2:$room_version"
+    // kapt "android.arch.persistence.room:compiler:$room_version"
+    // implementation "com.jakewharton.threetenabp:threetenabp:1.1.0"
+    // implementation "com.github.kizitonwose.time:time:1.0.2"
+    // implementation "com.github.kizitonwose.time:time-android:1.0.2"
+
+    // UI libs
+    // implementation "com.makeramen:roundedimageview:2.3.0"
+    // implementation "com.cesarferreira.colorize:colorize:0.2.2"
+    // implementation "de.hdodenhof:circleimageview:2.2.0"
+    // implementation "com.squareup.picasso:picasso:2.71828"
+
+    // debug libs
+    implementation "com.jakewharton.timber:timber:$versions.timber"
+    debugImplementation "com.amitshekhar.android:debug-db:1.0.4"
+
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.8@aar') {
+        transitive = true
+    }
+
+    // test libs
+    testImplementation "junit:junit:4.12"
+	  // testImplementation "android.arch.core:core-testing:1.1.1"
+    // testImplementation "android.arch.persistence.room:testing:1.1.1"
+
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+}

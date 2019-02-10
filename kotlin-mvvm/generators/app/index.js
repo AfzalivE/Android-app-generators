@@ -2,8 +2,42 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
+const mkdir = require('mkdirp')
+
+/**
+ * Use fs.copy or fs.copyTpl depending on whether
+ * the source begins with an underscore (_).
+ *
+ * @param source the source folder or file
+ * @param destination the destination folder or file
+ * @param props the props to pass on to copyTpl
+ */
+function copy(source, destination, props = this.props) {
+  var splitSource = source.split("/")
+  var fileName = splitSource[splitSource.length - 1]
+  if (fileName.startsWith("_")) {
+    this.fs.copyTpl(this.templatePath(source), this.destinationPath(destination), props)
+  } else {
+    this.fs.copy(this.templatePath(source), this.destinationPath(destination))
+  }
+}
+
+function copyTpl(source, destination, props = this.props) {
+  this.fs.copyTpl(this.templatePath(source), this.destinationPath(destination), props)
+}
 
 module.exports = class extends Generator {
+  initializing() {
+    console.log("templatePath: " + this.templatePath())
+    console.log("destinationPath: " + this.destinationPath())
+    console.log("contextRoot: " + this.contextRoot)
+    this.destinationRoot(this.contextRoot)
+    console.log("destinationPath: " + this.destinationPath())
+
+    this.copy = copy.bind(this);
+    this.copyTpl = copyTpl.bind(this);
+  }
+
   prompting() {
     // Have Yeoman greet the user.
     this.log(
@@ -11,13 +45,13 @@ module.exports = class extends Generator {
     );
 
     const prompts = [{
-        name: 'name',
+        name: 'appName',
         message: 'What are you calling your app?',
         store: true,
         default: this.appname // Default to current folder name
       },
       {
-        name: 'package',
+        name: 'packageName',
         message: 'What package will you be publishing the app under?',
         store: true
       },
@@ -38,6 +72,12 @@ module.exports = class extends Generator {
         message: 'Add .yml configs and Android license files for Gitlab and CircleCI',
         store: true,
         default: true
+      },
+      {
+        name: 'useFabric',
+        message: 'Add Fabric.io dependencies',
+        store: true,
+        default: false
       }
     ];
 
@@ -78,22 +118,44 @@ module.exports = class extends Generator {
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
       this.props = props;
+      this.props.fabricMavenUrl = ""
+      this.props.fabricClasspath = ""
+
+      if (this.props.useFabric) {
+        this.props.fabricMavenUrl = "maven { url 'https://maven.fabric.io/public' }"
+        this.props.fabricClasspath = "classpath 'io.fabric.tools:gradle:1.+'"
+      }
     });
   }
 
-  writing() {
+  projectFiles() {
     // project files
-    // var fabricMavenUrl = "maven { url 'https://maven.fabric.io/public' }"
-    // var fabricClasspath = "classpath 'io.fabric.tools:gradle:1.+'"
+    this.copy('gitignore', '.gitignore');
+    this.copy('gradle.properties', 'gradle.properties');
+    this.copy('gradlew', 'gradlew');
+    this.copy('gradlew.bat', 'gradlew.bat');
+    this.copy('settings.gradle', 'settings.gradle');
+    this.copy('gradle', 'gradle');
 
-    var fabricMavenUrl = ""
-    var fabricClasspath = ""
+    this.copy('_build.gradle', 'build.gradle')
+  }
 
-    this.fs.copy(this.templatePath('dummyfile.txt'), this.destinationPath('dummyfile.txt'))
-    this.fs.copyTpl(this.templatePath('build.gradle'), this.destinationPath('build.gradle'), {
-      fabricMavenUrl: fabricMavenUrl,
-      fabricClasspath: fabricClasspath
-    })
+  appFiles() {
+    var packageDir = this.props.packageName.replace(/\./g, '/');
+
+    // mkdir('app');
+    this.copy('app/proguard-rules.pro', 'app/proguard-rules.pro');
+    this.copy('app/_build.gradle', 'app/build.gradle');
+
+    // mkdir('app/src/main/java/' + packageDir);
+    this.copy('app/src/main/_AndroidManifest.xml', 'app/src/main/AndroidManifest.xml');
+    this.copyTpl('app/src/main/java', 'app/src/main/java/' + packageDir);
+    this.copyTpl('app/src/main/res', 'app/src/main/res');
+  }
+
+  writing() {
+    this.projectFiles()
+    this.appFiles()
   }
 
   install() {
