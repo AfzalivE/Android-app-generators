@@ -1,12 +1,12 @@
-package com.spacebitlabs.plantly
+package <%= packageName %>
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 
 class NavActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_navigation)
+        setContentView(R.layout.nav_activity)
     }
 }

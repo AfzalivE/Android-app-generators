@@ -1,6 +1,8 @@
 package <%= packageName %>.ui.home
 
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.*
 
 class HomeViewModel : ViewModel() {
 
@@ -26,7 +28,7 @@ class HomeViewModel : ViewModel() {
       viewModelScope.launch {
           // some 2 second async task
           delay(2000)
-          addPlantViewState.value = HomeViewState.Loaded()
+          homeViewState.value = HomeViewState.Loaded()
       }
     }
 

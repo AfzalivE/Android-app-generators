@@ -132,10 +132,10 @@ module.exports = class extends Generator {
     // project files
     this.copy('gitignore', '.gitignore');
     this.copy('gradle.properties', 'gradle.properties');
-    this.copy('gradlew', 'gradlew');
-    this.copy('gradlew.bat', 'gradlew.bat');
+    // this.copy('gradlew', 'gradlew');
+    // this.copy('gradlew.bat', 'gradlew.bat');
     this.copy('settings.gradle', 'settings.gradle');
-    this.copy('gradle', 'gradle');
+    // this.copy('gradle', 'gradle');
 
     this.copy('_build.gradle', 'build.gradle')
   }
