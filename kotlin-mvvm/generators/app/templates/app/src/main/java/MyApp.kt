@@ -1,9 +1,11 @@
 package <%= packageName %>
 
 import android.app.Application
+<% if (locals.fabricApiKey) { -%>
 import com.crashlytics.android.Crashlytics
 import com.crashlytics.android.beta.Beta
 import io.fabric.sdk.android.Fabric
+<% } -%>
 import timber.log.Timber
 
 /**
